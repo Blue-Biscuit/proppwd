@@ -1,0 +1,1 @@
+/usr/bin/cc CMakeFiles/propass.dir/main.c.o CMakeFiles/propass.dir/c_interface.c.o -o propass 
