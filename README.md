@@ -1,2 +1,2 @@
 # proppwd
-A simple password obfuscation program, because you shouldn't store passwords in your browser!
+A simple password management program, because you shouldn't store passwords in your browser!
