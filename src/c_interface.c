@@ -295,17 +295,68 @@ void _remove_cint(int argc, char** argv)
         size_t accounts_len = 0;
 
         bool result = account_read(passfile, master_pass, &accounts, &accounts_len);
+        
+        if (!result)
+        {
+            printf("Read Error\n");
+            if (accounts != NULL)
+            {
+                for (size_t i = 0; i < accounts_len; i++)
+                {
+                    if (accounts[i] != NULL)
+                    {
+                        free(accounts[i]);
+                    }
+                }
+                free(accounts);
+            }
+
+            return;
+        }
 
 //      LOOP THROUGH the list...
 
+        size_t null_count = 0;
+        for (size_t i = 0; i < accounts_len; i++)
+        {
+
 //          IF the current account matches the search criteria...
+
+            if (equals_ignore_case(holder, accounts[i]->holder) && (!by_username || equals_ignore_case(username, accounts[i]->username)))
+            {
 
 //              Mark it for deletion.
 
+                free(accounts[i]);
+                accounts[i] = NULL;
+                null_count++;
+            }
+        }
+
 //      Rebuild the list, removing marked accounts.
+
+        size_t new_accounts_len = accounts_len - null_count;
+        struct account** new_accounts = malloc(sizeof(struct account*) * new_accounts_len);
+        size_t new_i = 0;
+
+        for (size_t i = 0; i < accounts_len; i++)
+        {
+            if (accounts[i] != NULL)
+            {
+                new_accounts[new_i] = accounts[i];
+                new_i++;
+            }
+        }
 
 //      Save the list to the file.
 
+        account_write(passfile, master_pass, (const struct account**)new_accounts, new_accounts_len);
+
+        for (size_t i = 0; i < new_accounts_len; i++)
+        {
+            free(new_accounts[i]);
+        }
+        free(new_accounts);
     }
 }
 

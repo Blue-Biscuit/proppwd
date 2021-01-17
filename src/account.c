@@ -437,7 +437,8 @@ bool account_read(const char * filename, const char * password, struct account *
         struct account* acc = NULL;
         if (!account_from_str(str, &acc))
         {
-            printf("TODO: Error Check this condition.\n");
+            if (acc != NULL) account_free(acc);
+            free(str);
         }
 
         if (acc == NULL)

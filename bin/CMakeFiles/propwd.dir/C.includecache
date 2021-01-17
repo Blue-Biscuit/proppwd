@@ -6,7 +6,7 @@
 
 #IncludeRegexTransform: 
 
-/home/andrewh/Projects/C/propass/src/account.h
+/home/andrewh/Projects/C/proppwd/src/account.h
 stdlib.h
 -
 string.h
@@ -16,11 +16,11 @@ stdio.h
 stdbool.h
 -
 account.h
-/home/andrewh/Projects/C/propass/src/account.h
+/home/andrewh/Projects/C/proppwd/src/account.h
 
-/home/andrewh/Projects/C/propass/src/c_interface.c
+/home/andrewh/Projects/C/proppwd/src/c_interface.c
 c_interface.h
-/home/andrewh/Projects/C/propass/src/c_interface.h
+/home/andrewh/Projects/C/proppwd/src/c_interface.h
 stdio.h
 -
 sys/stat.h
@@ -30,19 +30,19 @@ stdbool.h
 stdlib.h
 -
 helpers.h
-/home/andrewh/Projects/C/propass/src/helpers.h
+/home/andrewh/Projects/C/proppwd/src/helpers.h
 obscure_str.h
-/home/andrewh/Projects/C/propass/src/obscure_str.h
+/home/andrewh/Projects/C/proppwd/src/obscure_str.h
 account.h
-/home/andrewh/Projects/C/propass/src/account.h
+/home/andrewh/Projects/C/proppwd/src/account.h
 
-/home/andrewh/Projects/C/propass/src/c_interface.h
+/home/andrewh/Projects/C/proppwd/src/c_interface.h
 
-/home/andrewh/Projects/C/propass/src/helpers.h
+/home/andrewh/Projects/C/proppwd/src/helpers.h
 stdbool.h
 -
 stddef.h
 -
 
-/home/andrewh/Projects/C/propass/src/obscure_str.h
+/home/andrewh/Projects/C/proppwd/src/obscure_str.h
 
