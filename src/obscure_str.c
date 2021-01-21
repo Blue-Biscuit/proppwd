@@ -18,100 +18,109 @@
 
 const size_t CHAR_RANGE = abs(CHAR_MIN) + CHAR_MAX;
 
+//////////////////////////////
+// PRIVATE HELPER FUNCTIONS //
+//////////////////////////////
+
+char fix_range(int out_of_range_char)
+{
+//	WHILE the result is over the maximum character limit, decrement it by the character range.
+
+	const int CHAR_RANGE = CHAR_MAX + abs(CHAR_MIN) + 1;
+
+	while (out_of_range_char > CHAR_MAX) out_of_range_char -= CHAR_RANGE;
+
+//	WHILE the result is under the minimum character limit, increment it by the character range.
+
+	while (out_of_range_char < CHAR_MIN) out_of_range_char += CHAR_RANGE;
+
+//	RETURN the result, cast again as a character.
+
+	return (char)out_of_range_char;
+}
+
+char* obscure_string_toggle(const char* password, const char* str, bool obscure_or_unobscure)
+{
+//	Perform an initial parameter validity check.
+
+	if (password == NULL || str == NULL)
+	{
+		return NULL;
+	}
+
+//	Allocate a buffer to store the result of the obscuration.
+
+	size_t str_len = strlen(str);
+
+	char* result = malloc(str_len + 1);
+	result[str_len] = '\0';
+
+//	Declare loop variables.
+
+	size_t password_i = 0;
+	size_t password_len = strlen(password);
+
+//	FOR EACH character in the string...
+
+	for (size_t i = 0; i < str_len; i++)
+	{
+
+//		Perform a Caeserian encode based upon the character of the string and the character of the password plus the length of the password.
+
+		if (obscure_or_unobscure)
+		{
+			result[i] = caeserian_encode(str[i], (int)password[password_i] + password_len);
+		}
+		else
+		{
+			result[i] = caeserian_decode(str[i], (int)password[password_i] + password_len);
+		}
+
+
+//		Iterate loop variables.
+
+		password_i++;
+
+//		Reset the password if it's greater than or equal to the length.
+
+		if (password_i >= password_len)
+		{
+			password_i = 0;
+		}
+	}
+
+	return result;
+}
+
 //////////////////////////
 // FUNCTION DEFINITIONS //
 //////////////////////////
 
 
-
 char* obscure_string(const char* password, const char* str)
 {
-// Check the validity of the params
-
-    if (password == NULL || str == NULL)
-    {
-        return NULL;
-    }
-
-// Declare vars
-
-    size_t str_len = strlen(str);
-    size_t pass_len = strlen(password);
-
-
-    size_t str_i = 0;
-    size_t pass_i = 0;
-
-// Malloc a string the same size as str to be the result.
-
-    char* result = (char*) malloc(sizeof(char) * (str_len + 1));
-    if (result == NULL) return NULL;
-    strcpy(result, str);
-
-
-// Obscure the string based on the password, by looping through, adding ascii values (in a ceasarian cipher kind of way),
-// and adding the length of the string.
-
-    const int CHAR_RANGE = abs(CHAR_MIN) + CHAR_MAX;
-
-    while (str[str_i] != '\0')
-    {
-        int result_val = (int)str[str_i] + (int)password[pass_i] + (int)str_len;
-        while (result_val > CHAR_MAX) result_val -= CHAR_RANGE;
-        while (result_val < CHAR_MIN) result_val += CHAR_RANGE;
-
-        result[str_i] = (char)result_val;
-
-        str_i++;
-        pass_i++;
-
-        if (pass_i == pass_len) pass_i = 0;
-    }
-
-    return result;
+	return obscure_string_toggle(password, str, true);
 }
 
 char* unobscure_string(const char* password, const char* str)
 {
-// Check the validity of the params.
+	return obscure_string_toggle(password, str, false);
+}
 
-    if (password == NULL || str == NULL)
-    {
-        return NULL;
-    }
+char caeserian_encode(char c, int offset)
+{
+//	Convert the passed character to an int and add the offset.
 
-// Declare vars
+	int result = (int)c + offset;
 
-    size_t str_len = strlen(str);
-    size_t pass_len = strlen(password);
+	return fix_range(result);
+}
 
-    size_t str_i = 0;
-    size_t pass_i = 0;
+char caeserian_decode(char c, int offset)
+{
+//	Convert the passed character to an int and subtract the offset.
 
-    char* result;
+	int result = (int)c - offset;
 
-// Dynamically allocate a copy of str to funtion as the result.
-
-    result = (char*) malloc(sizeof(char) * (str_len + 1));
-    if (result == NULL) return NULL;
-    strcpy(result, str);
-
-// Unobscure the string based upon the password, doing the opposite of what
-// was done by obscure_string().
-
-    while (str[str_i] != '\0')
-    {
-        int result_val = (int)str[str_i] - (int)password[pass_i] - str_len;
-        while (result_val > CHAR_MAX) result_val -= CHAR_RANGE;
-        while (result_val < CHAR_MIN) result_val += CHAR_RANGE;
-
-        result[str_i] = (char)result_val;
-
-        str_i++;
-        pass_i++;
-
-        if (pass_i == pass_len) pass_i = 0;
-    }
-
-    return result;
+	return fix_range(result);
 }

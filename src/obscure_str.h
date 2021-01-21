@@ -41,5 +41,21 @@ char* obscure_string(const char* password, const char* str);
 //      malloc() fails (out of memory).
 char* unobscure_string(const char* password, const char* str);
 
+// Performs a caeser-cipher encode on the character provided.
+//
+// c: char -> The character to encode.
+// offset: int -> The offset to add to the character.
+//
+// returns -> The encoded character.
+char caeserian_encode(char c, int offset);
+
+// Performs a caeser-cipher decode on the character provided.
+//
+// c: char -> The character to decode.
+// offset: int -> The offset to subtract from the character.
+//
+// returns -> The decoded character.
+char caeserian_decode(char c, int offset)
+
 
 #endif // OBSCURE_STR_PROPWD_H

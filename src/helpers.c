@@ -64,8 +64,12 @@ bool file_exists(const char* filename)
 char* substring(const char* str, size_t begin, size_t end)
 {
     if (begin >= end || str == NULL) return NULL;
+    else if (begin >= strlen(str) || end >= strlen(str)) return NULL;
 
     char* result = malloc(end - begin + 1);
+
+    if (result == NULL) return NULL;
+
     memcpy(result, str + begin, end - begin);
     result[end - begin] = '\0';
 
