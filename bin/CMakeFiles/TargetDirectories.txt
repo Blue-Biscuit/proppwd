@@ -1,3 +1,3 @@
-/home/andrewh/Projects/C/proppwd/bin/CMakeFiles/rebuild_cache.dir
-/home/andrewh/Projects/C/proppwd/bin/CMakeFiles/edit_cache.dir
-/home/andrewh/Projects/C/proppwd/bin/CMakeFiles/propwd.dir
+/home/andrewh/git/proppwd/bin/CMakeFiles/rebuild_cache.dir
+/home/andrewh/git/proppwd/bin/CMakeFiles/edit_cache.dir
+/home/andrewh/git/proppwd/bin/CMakeFiles/propwd.dir

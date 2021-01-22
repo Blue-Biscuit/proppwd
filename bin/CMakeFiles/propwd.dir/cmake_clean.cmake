@@ -4,6 +4,7 @@ file(REMOVE_RECURSE
   "CMakeFiles/propwd.dir/helpers.c.o"
   "CMakeFiles/propwd.dir/main.c.o"
   "CMakeFiles/propwd.dir/obscure_str.c.o"
+  "CMakeFiles/propwd.dir/tester.c.o"
   "propwd"
   "propwd.pdb"
 )

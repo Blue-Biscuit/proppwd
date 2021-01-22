@@ -11,6 +11,7 @@
 #include <string.h>
 #include <limits.h>
 #include <stdio.h>
+#include <stdbool.h>
 
 ///////////////
 // CONSTANTS //

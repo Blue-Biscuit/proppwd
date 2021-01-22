@@ -10,4 +10,5 @@ add_executable(
     helpers.c
     account.c
     obscure_str.c
+    tester.c
 )

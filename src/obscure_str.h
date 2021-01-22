@@ -33,7 +33,7 @@ char* obscure_string(const char* password, const char* str);
 // str: const char* -> The string to unobscure.
 //
 // returns ->
-//      a DYNAMICALLY ALOCATED string representing the unobscuration result.
+//      a DYNAMICALLY ALOCATED string representing the deobscuration result.
 //      if an error condition is met, returns NULL.
 //
 // error conditions ->
@@ -55,7 +55,7 @@ char caeserian_encode(char c, int offset);
 // offset: int -> The offset to subtract from the character.
 //
 // returns -> The decoded character.
-char caeserian_decode(char c, int offset)
+char caeserian_decode(char c, int offset);
 
 
 #endif // OBSCURE_STR_PROPWD_H

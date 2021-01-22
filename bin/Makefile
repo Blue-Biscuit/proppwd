@@ -67,10 +67,10 @@ RM = /usr/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/andrewh/Projects/C/proppwd/src
+CMAKE_SOURCE_DIR = /home/andrewh/git/proppwd/src
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/andrewh/Projects/C/proppwd/bin
+CMAKE_BINARY_DIR = /home/andrewh/git/proppwd/bin
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -99,9 +99,9 @@ edit_cache/fast: edit_cache
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/andrewh/Projects/C/proppwd/bin/CMakeFiles /home/andrewh/Projects/C/proppwd/bin//CMakeFiles/progress.marks
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/andrewh/git/proppwd/bin/CMakeFiles /home/andrewh/git/proppwd/bin//CMakeFiles/progress.marks
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/andrewh/Projects/C/proppwd/bin/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/andrewh/git/proppwd/bin/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
@@ -277,6 +277,33 @@ obscure_str.c.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/propwd.dir/build.make CMakeFiles/propwd.dir/obscure_str.c.s
 .PHONY : obscure_str.c.s
 
+tester.o: tester.c.o
+
+.PHONY : tester.o
+
+# target to build an object file
+tester.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/propwd.dir/build.make CMakeFiles/propwd.dir/tester.c.o
+.PHONY : tester.c.o
+
+tester.i: tester.c.i
+
+.PHONY : tester.i
+
+# target to preprocess a source file
+tester.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/propwd.dir/build.make CMakeFiles/propwd.dir/tester.c.i
+.PHONY : tester.c.i
+
+tester.s: tester.c.s
+
+.PHONY : tester.s
+
+# target to generate assembly for a file
+tester.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/propwd.dir/build.make CMakeFiles/propwd.dir/tester.c.s
+.PHONY : tester.c.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -301,6 +328,9 @@ help:
 	@echo "... obscure_str.o"
 	@echo "... obscure_str.i"
 	@echo "... obscure_str.s"
+	@echo "... tester.o"
+	@echo "... tester.i"
+	@echo "... tester.s"
 .PHONY : help
 
 

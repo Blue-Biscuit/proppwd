@@ -10,7 +10,7 @@ set(CMAKE_MAKEFILE_DEPENDS
   "CMakeFiles/3.19.1/CMakeCCompiler.cmake"
   "CMakeFiles/3.19.1/CMakeCXXCompiler.cmake"
   "CMakeFiles/3.19.1/CMakeSystem.cmake"
-  "/home/andrewh/Projects/C/proppwd/src/CMakeLists.txt"
+  "/home/andrewh/git/proppwd/src/CMakeLists.txt"
   "/usr/share/cmake-3.19/Modules/CMakeCInformation.cmake"
   "/usr/share/cmake-3.19/Modules/CMakeCXXInformation.cmake"
   "/usr/share/cmake-3.19/Modules/CMakeCheckCompilerFlagCommonPatterns.cmake"
